@@ -13,6 +13,7 @@
 
 ### No Implementado — Requiere Desarrollo
 - [ ] **Batch write cron etapas T** — fix de la falla del viernes. El cron hace 14,167 writes individuales. Debe ser batch. VERIFICAR `@api.depends("agency_t_stage")` antes de implementar.
+- [ ] **Referidos crean lead en CRM nativo** — Al crear referido con `env["crm.lead"].create()`, Odoo lo registra en el pipeline del módulo CRM nativo. Debe quedarse SOLO en módulo Campañas. Investigar: usar `with_context(default_type='lead')` o limpiar el pipeline después, o crear sin pasar por el pipeline CRM.
 - [ ] **Índices en tablas de crons** — verificar nombres reales de columnas con grep antes de crear índices.
 - [ ] **Bug 44 leads inconsistentes** — call_log actualizado a "contacted" pero etapa de agencia no avanzó. Investigar auto-avance en call_log.py:229-232 vs webhook flow.
 
